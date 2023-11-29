@@ -12,5 +12,6 @@ public interface BairroRepository extends CrudRepository<Bairros, Long> {
 	List<Bairros> findAll();
 	@Query(value = "SELECT * FROM public.tbl_bairros ORDER BY populacao DESC LIMIT 5", nativeQuery = true)	
 	   List<Bairros> listarPopulacao();
+	
 
 }

@@ -1,12 +1,14 @@
 package ifsul.campusBage.cadastroDeCidades.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import ifsul.campusBage.cadastroDeCidades.models.Bairros;
 import ifsul.campusBage.cadastroDeCidades.repositories.BairroRepository;
@@ -59,5 +61,34 @@ public class BairroController {
 	return "lista-de-bairros-pop.jsp";
 
 	}
+	@GetMapping("/excluirBairro")
+	public String excluirBairro(Model model,
+			                             @RequestParam("id") Long id) {
+
+	Optional<Bairros> bairroOpt = bairroRepository.findById(id);
+	if(bairroOpt.get()!=null) {
+		Bairros bairro = bairroOpt.get();
+		model.addAttribute("bairro", bairro);
+	} else {
+		model.addAttribute("mensagem", "Bairro não encontrado");
+	}
+	return "excluir-bairro.jsp";
+	}
+	@GetMapping("/excluirBairroBD")
+	public String excluirBairroBD(Model model,
+			                             @RequestParam("id") Long id) {
+
+	bairroRepository.deleteById(id);
+		
+	List<Bairros> listaPop = (List<Bairros>) bairroRepository.listarPopulacao();
+
+	model.addAttribute("listaDeBairrosPopulacao", listaPop);
+	model.addAttribute("mensagem", "Bairro excluido com sucesso");
+
+	return "lista-de-bairros-pop.jsp";
+
+	}
+	
+	
 	
 }

@@ -9,6 +9,7 @@
 <body style="margin-top: -20px;">
 
 	<c:import url="cabecalho.jsp" />
+	
 
 	<h2>Lista de bairros</h2>
 	
@@ -21,10 +22,12 @@
 			<td width="50">${bairroCorrente.id}</td>
 			<td width="400">${bairroCorrente.nome}</td>
 			<td width="50">${bairroCorrente.populacao}</td>
+			<td width="50"><a href="excluirBairro?id=${bairroCorrente.id}">Excluir</a></td>
 		</tr>
 	  </c:forEach>
 
 	</table>
+	
 
 	<br />	
 	<input type="button" name="btnVoltar" value="Voltar" onclick="history.go(-1);">

@@ -8,19 +8,28 @@
 </head>
 <body style="margin-top: -20px;">
 
+
 	<c:import url="cabecalho.jsp" />
+	<c:if test="${not empty mensagem}">
+		<br />
+		<br />
+		<div style="color: white; background-color: green; width: 300px; text-align: center;">
+			${mensagem}
+		</div>
+	</c:if>
 
 	<h2>Lista dos 5 bairros mais populosos</h2>
 	
 	<table border="1">
 		<tr bgcolor="gray">
-			<th>Id</th><th>Nome</th><th>População</th>
+			<th>Id</th><th>Nome</th><th>População</th><th>Excluir</th>
 		</tr>
      <c:forEach var="bairroCorrente" items="${listaDeBairrosPopulacao}">
 		<tr>
 			<td width="50">${bairroCorrente.id}</td>
 			<td width="400">${bairroCorrente.nome}</td>
 			<td width="50">${bairroCorrente.populacao}</td>
+			<td width="50"><a href="excluirBairroBD?id=${bairroCorrente.id}">Excluir</a></td>
 		</tr>
 	  </c:forEach>
 
