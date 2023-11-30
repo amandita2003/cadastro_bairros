@@ -22,14 +22,15 @@
 	
 	<table border="1">
 		<tr bgcolor="gray">
-			<th>Id</th><th>Nome</th><th>População</th><th>Excluir</th>
+			<th>Id</th><th>Nome</th><th>População</th><th>Excluir</th><th>Consultar</th>
 		</tr>
      <c:forEach var="bairroCorrente" items="${listaDeBairrosPopulacao}">
 		<tr>
 			<td width="50">${bairroCorrente.id}</td>
 			<td width="400">${bairroCorrente.nome}</td>
 			<td width="50">${bairroCorrente.populacao}</td>
-			<td width="50"><a href="excluirBairroBD?id=${bairroCorrente.id}">Excluir</a></td>
+			<td width="50"><a href="excluirBairro?id=${bairroCorrente.id}">Excluir</a></td>
+			<td width="50"><a href="consultar?id=${bairroCorrente.id}">Consultar</a></td>
 		</tr>
 	  </c:forEach>
 

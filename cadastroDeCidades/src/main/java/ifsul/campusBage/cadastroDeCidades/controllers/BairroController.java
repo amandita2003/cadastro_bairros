@@ -88,7 +88,39 @@ public class BairroController {
 	return "lista-de-bairros-pop.jsp";
 
 	}
+	@GetMapping("/consultar")
+	public String consultar(Model model, @RequestParam("id") Long id) {
+
+		Optional<Bairros> bairroOps = bairroRepository.findById(id);
+		if(bairroOps.get()!=null) {
+			Bairros bairro = bairroOps.get();
+			model.addAttribute("bairro", bairro);
+		} else {
+			model.addAttribute("mensagem", "Bairro não encontrado");
+		}
+
+		return "form-consulta.jsp";
+
+	}
+	@PostMapping("/consultaNome")
+	public String consultaNome(Model model, String nome) {
+
+		Bairros bairro = bairroRepository.consultarPorNome(nome);
+		if (bairro != null) {
+			model.addAttribute("bairro", bairro);
+
+			return "form-consulta.jsp";
+		}else {
+			model.addAttribute("mensagem", "Bairro não encontrado") ;
+			return "form-consulta-direta.jsp";
+		}
+		
+	}
 	
-	
+	@GetMapping("/consultaDireta")
+	public String consultaDireta() {
+
+		return "form-consulta-direta.jsp";
+	}
 	
 }

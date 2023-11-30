@@ -4,10 +4,12 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Consultar cidade</title>
+	<title>Cadastrar cidade</title>
 </head>
 <body style="margin-top: -20px;">
+
 	<c:import url="cabecalho.jsp" />
+
 	<c:if test="${not empty mensagem}">
 		<br />
 		<br />
@@ -15,30 +17,36 @@
 			${mensagem}
 		</div>
 	</c:if>
-	<h2>Cadastrar Cidade</h2>
+
+	<h2>Consultar Bairro</h2>
 	
-	<form action="cadastrarCidade" method="post">
+	<form>
 	
+		Id:
+		<br />
+		<input type="text" name="est" value="${bairro.id}" size="2">
+		<br>
 		Nome:
 		<br />
-		<input type="text" name="nome" value="${umaCidade.nome}">
+		<input type="text" name="nome" value="${bairro.nome}">
+
 		<br />		
 		<br />
-		Estado:
+		População:
 		<br />
-		<input type="text" name="estado" value="${umaCidade.estado}" size="2">
+		<input type="text" name="estado" value="${bairro.populacao}" size="2">
 	
 		<br />
 		<br />
 		<input type="button" name="btnVoltar" value="Voltar" onclick="history.go(-1);">
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<input type="submit" name="btnSalvar" value="Salvar">		
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
 		
 	</form>
+
 	<br />
 	<br />
 	<br />
 	<c:import url="rodape.jsp" />
+
 </body>
 </html>
-

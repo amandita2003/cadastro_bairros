@@ -20,5 +20,13 @@
 	&nbsp;
 	<a href="exibirForm">Cadastrar Bairro</a>  
 	&nbsp;
+	|	
+	&nbsp;
+	<a href="listarTodosBairros">Listar Bairros</a>  
+	&nbsp;
+	|		
+	&nbsp;
+	<a href="bairrosPopulosos">Listar Bairros Mais Populosos</a>  
+	&nbsp;
 	|		
 </div>
